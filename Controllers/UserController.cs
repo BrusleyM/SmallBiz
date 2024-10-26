@@ -24,7 +24,7 @@ public class UserController : ControllerBase
     /// <param name="id">The ID of the user to get.</param>
     /// <returns>The user with the given ID if found, otherwise NotFound.</returns>
     [HttpGet("byId/{id}")]
-    public async Task<IActionResult> GetUserById(int id)
+    public async Task<IActionResult> GetUserById(string id)
     {
         var user = await _userRepository.GetUserByIdAsync(id);
         if (user == null)
@@ -34,9 +34,9 @@ public class UserController : ControllerBase
     }
     /// <summary>
     /// Creates a new user in the system.
-    /// </summary>
     /// <param name="user">The user object to be created. This must be passed in the request body.</param>
     /// <returns>A CreatedAtAction result containing the created user and a route to get it by ID, or a BadRequest if the model state is invalid.</returns>
+      /// </summary>
     [HttpPost("add")]
     public async Task<IActionResult> CreateUser([FromBody] User user)
     {
@@ -54,7 +54,7 @@ public class UserController : ControllerBase
     /// <param name="user">The user object containing the updated values. This must be passed in the request body.</param>
     /// <returns>A NoContent result if the update is successful, or a NotFound if the user does not exist.</returns>
     [HttpPut("update/{id}")]
-    public async Task<IActionResult> UpdateUser(int id, [FromBody] User user)
+    public async Task<IActionResult> UpdateUser(string id, [FromBody] User user)
     {
         var existingUser = await _userRepository.GetUserByIdAsync(id);
         if (existingUser == null)
@@ -72,7 +72,7 @@ public class UserController : ControllerBase
     /// <param name="id">The ID of the user to delete.</param>
     /// <returns>No content if the deletion was successful, or NotFound if the user does not exist.</returns>
     [HttpDelete("delete/{id}")]
-    public async Task<IActionResult> DeleteUser(int id)
+    public async Task<IActionResult> DeleteUser(string id)
     {
         var user = await _userRepository.GetUserByIdAsync(id);
         if (user == null)

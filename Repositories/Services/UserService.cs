@@ -29,13 +29,12 @@ namespace SmallBizAPI.Repositories.Services
             return await _context.Users.ToListAsync();
         }
 
-
         public async Task<User> GetUserByEmailAsync(string email)
         {
             return await _context.Users.FirstOrDefaultAsync(u => u.Email == email);
         }
 
-        public async Task<User> GetUserByIdAsync(int id)
+        public async Task<User> GetUserByIdAsync(string id)
         {
             return await _context.Users.FirstOrDefaultAsync(u => u.Id == id);
         }

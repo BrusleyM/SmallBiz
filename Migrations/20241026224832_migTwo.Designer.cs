@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SmallBizAPI.Data;
 
@@ -11,9 +12,11 @@ using SmallBizAPI.Data;
 namespace SmallBizApi.Migrations
 {
     [DbContext(typeof(SmallBizDBContext))]
-    partial class SmallBizDBContextModelSnapshot : ModelSnapshot
+    [Migration("20241026224832_migTwo")]
+    partial class migTwo
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
